@@ -9,6 +9,7 @@ fun main() {
         println("Capacity: ${capacity}")
         println("Material: ${buildingMaterial}")
         println("Has room? ${hasRoom()}")
+        getRoom()
         println("Floor area: %.2f".format(floorArea()))
     }
        
@@ -17,6 +18,7 @@ fun main() {
         println("Material: ${buildingMaterial}")
         println("Capacity: ${capacity}")
         println("Has room? ${hasRoom()}")
+        getRoom()
         println("Floor area: %.2f".format(floorArea()))
     }
        
@@ -25,6 +27,7 @@ fun main() {
         println("Material: ${buildingMaterial}")
         println("Capacity: ${capacity}")
         println("Has room? ${hasRoom()}")
+        getRoom()
         println("Floor area: %.2f".format(floorArea()))
     }
 }
@@ -33,11 +36,22 @@ fun main() {
 abstract class Dwelling(private var residents: Int) {
     abstract val buildingMaterial: String
     abstract val capacity: Int
-       
+    abstract fun floorArea(): Double
+    
     fun hasRoom(): Boolean {
        return residents < capacity
    }
-    abstract fun floorArea(): Double
+    
+    fun getRoom() {
+        if (capacity > residents){
+            residents++
+            //residents++ is a shorthand for residents = residents + 1
+            println("You got a room")
+        } else {
+            println("Sorry, at capacity and no room left.")
+        }
+    }
+    
 }
 
 
